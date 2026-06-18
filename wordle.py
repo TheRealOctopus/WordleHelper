@@ -50,12 +50,14 @@ while True:
 
     if (a.startswith("i")): # include
          a = a[1:]
-         includes.append(a)
+         for ch in a:
+            includes.append(ch)
          changed = True
 
     elif (a.startswith("n")): # not include
         a = a[1:]
-        nincludes.append(a)
+        for ch in a:
+            nincludes.append(ch)
         changed = True
 
     elif (a.startswith("e")): # exact
@@ -80,6 +82,6 @@ while True:
     if changed:
         cleanup()
         includes = []
-        ninclude = []
+        nincludes = []
     
 
