@@ -9,6 +9,22 @@ def startup():
         for line in file:
             words.append(line.replace("\n", ""))
 
+def in_includes(word):
+    global includes
+
+    for chs in includes:
+        if(chs not in word):
+            return False
+    return True
+
+def in_mincludes(word):
+    global nincludes
+
+    for chs in nincludes:
+        if(chs in word):
+            return True
+    return False
+
 def cleanup():
     global words
     global includes
@@ -16,30 +32,33 @@ def cleanup():
     
     for i in range(len(words)):
         if len(includes) == 2: # clean up for exact command
-            if not words[i][includes[1]] == includes[0]: # if not exact char in include[1] equal include[0]
-                words[i] = ""
+            if (type(includes[1]) == int and type(includes[0]) == str):
+                if not words[i][includes[1]] == includes[0]: # if not exact char in include[1] equal include[0]
+                    words[i] = ""
+                    continue
                 continue
-            continue
 
         if len(includes) == 3: # clean up for not exact command
-            if words[i][includes[1]] == includes[0]:
-                words[i] = ""
-                continue
+            if (type(includes[1]) == int and type(includes[0]) == str) and type(includes[2]) == str:
+                if words[i][includes[1]] == includes[0]:
+                    words[i] = ""
+                    continue
             continue
 
+        if includes != []: # clean up for include command
+            if in_includes(words[i]):
+                continue
+            else:
+                words[i] = ""
+                continue
         
-        for c in range(len(words[i])): 
-            if nincludes != []: # clean up for not include command
-                if words[i][c] in nincludes:
-                    words[i] = ""
-                    break
-            if includes != []: # clean up for include command
-                if words[i][c] in includes:
-                    break
-                
-                if ((words[i][c] not in includes) and (c == len(words[i]) - 1)):
-                    words[i] = ""
-                    break
+        if nincludes != []: # clean up for not include command
+            if in_mincludes(words[i]):
+                words[i] = ""
+                continue
+            else:
+                continue
+
     words = [w for w in words if w != ""]
 
 startup()
