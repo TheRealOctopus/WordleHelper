@@ -5,7 +5,7 @@ nincludes = []
 def startup():
     global words
     words = []
-    with open("./words.txt", "r") as file:
+    with open("./all-wordle-words.txt", "r") as file:
         for line in file:
             words.append(line.replace("\n", ""))
 
