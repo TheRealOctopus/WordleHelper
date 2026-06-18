@@ -28,7 +28,7 @@ Commands are entered one at a time. The word list is filtered immediately after 
 
 | Command | Meaning | Example |
 |--------|---------|---------|
-| `i<char>` | **Include** — keep only words containing this letter (yellow or green tile) | `ia` → keep words with `a` |
+| `i<char>` | **Include** — keep only words containing this letter (yellow or green tile) | `iae` → keep words with `a` and e |
 | `n<char>` | **Not include** — remove words containing this letter (grey tile) | `nz` → remove words with `z` |
 | `e<char><pos>` | **Exact** — keep only words with this letter at this position (green tile) | `ea2` → `a` must be at position 2 |
 | `r<char><pos>` | **Remove position** — remove words with this letter at this position (yellow tile — letter exists but not here) | `ra2` → remove words where `a` is at position 2 |
@@ -61,14 +61,11 @@ Next guess: **STERN**
 
 ```
 Guess: STERN
-Result: S=grey, T=grey, E=yellow, R=yellow, N=green
+Result: S=grey, T=grey, E=🟡, R=🟡, N=🟢
 ```
 
 ```
-ns
-nt
-ie
-ir
+nster
 en5
 re2
 show
