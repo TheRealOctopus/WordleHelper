@@ -1,6 +1,8 @@
 words = []
 includes = []
 nincludes = []
+temp = []
+debuging = False
 
 def startup():
     global words
@@ -13,7 +15,7 @@ def in_includes(word):
     global includes
 
     for chs in includes:
-        if(chs not in word):
+        if(str(chs) not in word):
             return False
     return True
 
@@ -21,7 +23,7 @@ def in_mincludes(word):
     global nincludes
 
     for chs in nincludes:
-        if(chs in word):
+        if(str(chs) in word):
             return True
     return False
 
@@ -31,16 +33,16 @@ def cleanup():
     global nincludes
     
     for i in range(len(words)):
-        if len(includes) == 2: # clean up for exact command
-            if (type(includes[1]) == int and type(includes[0]) == str):
-                if not words[i][includes[1]] == includes[0]: # if not exact char in include[1] equal include[0]
+        if len(temp) == 2: # clean up for exact command
+            if (type(temp[1]) == int and type(temp[0]) == str):
+                if not words[i][temp[1]] == temp[0]: # if not exact char in include[1] equal include[0]
                     words[i] = ""
                     continue
                 continue
 
-        if len(includes) == 3: # clean up for not exact command
-            if (type(includes[1]) == int and type(includes[0]) == str) and type(includes[2]) == str:
-                if words[i][includes[1]] == includes[0]:
+        if len(temp) == 3: # clean up for not exact command
+            if (type(temp[1]) == int and type(temp[0]) == str) and type(temp[2]) == str:
+                if words[i][temp[1]] == temp[0]:
                     words[i] = ""
                     continue
             continue
@@ -81,26 +83,32 @@ while True:
 
     elif (a.startswith("e")): # exact
         a = a[1:] # format a: ea2 (exact a at 2)
-        includes.append(a[0]) # the char
-        includes.append(int(a[1]) - 1) # the exact position
+        includes.append(a[0])
+        temp.append(a[0]) # the char
+        temp.append(int(a[1]) - 1) # the exact position
         changed = True
 
     elif (a.startswith("r")): # remove
         a = a[1:] # format a: ra2 (remove where a at 2)
-        includes.append(a[0]) # same as the exact command
-        includes.append(int(a[1]) - 1)
-        includes.append("")
+        includes.append(a[0])
+        temp.append(a[0]) # same as the exact command
+        temp.append(int(a[1]) - 1)
+        temp.append("")
         changed = True
 
     if (a.startswith("show")):
          print(words)
     
     if (a.startswith("clear")):
+        includes = []
+        nincludes = []
         startup()
 
     if changed:
+        includes = list(set(includes))
+        nincludes = list(set(nincludes))
+        if debuging: print(includes, nincludes, temp)
         cleanup()
-        includes = []
-        nincludes = []
+        temp = []
     
 
