@@ -80,4 +80,5 @@ The list now contains only words where `e` and `r` are present, `n` is the last 
 - The `i` (include) command keeps words that contain the letter **anywhere** — pair it with `r` to express "letter is in the word but not at this spot" (yellow tile).
 - `clear` reloads the word list from `words.txt` so you can start a fresh puzzle without restarting the script.
 - Each command resets internal state after filtering, so commands don't stack — enter one clue at a time.
+- The word list may not include the name of a compound for something the same.
 - Original words list file [https://gist.github.com/daemondevin/df09befaf533c380743bc2c378863f0c]
