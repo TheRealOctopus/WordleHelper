@@ -49,11 +49,7 @@ Result: A=grey, U=grey, D=grey, I=grey, O=grey
 ```
 
 ```
-na
-nu
-nd
-ni
-no
+naudio
 show
 ```
 
@@ -65,9 +61,10 @@ Result: S=grey, T=grey, E=🟡, R=🟡, N=🟢
 ```
 
 ```
-nster
+nst
 en5
-re2
+re3
+rr4
 show
 ```
 
