@@ -38,14 +38,14 @@ def cleanup():
                 if not words[i][temp[1]] == temp[0]: # if not exact char in include[1] equal include[0]
                     words[i] = ""
                     continue
-                continue
+                
 
         if len(temp) == 3: # clean up for not exact command
             if (type(temp[1]) == int and type(temp[0]) == str) and type(temp[2]) == str:
                 if words[i][temp[1]] == temp[0]:
                     words[i] = ""
                     continue
-            continue
+            
 
         if not in_includes(words[i]):
             words[i] = ""
