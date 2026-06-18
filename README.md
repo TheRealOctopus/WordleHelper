@@ -78,7 +78,7 @@ The list now contains only words where `e` and `r` are present, `n` is the last 
 - The `i` (include) command keeps words that contain the letter **anywhere** — pair it with `r` to express "letter is in the word but not at this spot" (yellow tile).
 - `clear` reloads the word list from `words.txt` so you can start a fresh puzzle without restarting the script.
 - Each command resets internal state after filtering, so commands don't stack — enter one clue at a time.
-- Even the "Not include" command can be used for multiple characters, but using the command character-by-character is recommended.
+- The "Include" and the "Not include" commands can be used for multiple characters, but using the command character-by-character is recommended.
 - The "words.txt" file may not include the name of a compound for something the same.
 - Original words list file [https://gist.github.com/daemondevin/df09befaf533c380743bc2c378863f0c]
 - Wordle words list file [https://gist.github.com/dracos/dd0668f281e685bad51479e5acaadb93]
