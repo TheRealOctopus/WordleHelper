@@ -1,4 +1,4 @@
-# WordleHelper 🟩
+# WordleHelper 
 
 A lightweight command-line tool that narrows down your Wordle candidates in real time. Feed it the clues from each guess — green, yellow, and grey tiles — and it filters a word list down to only the words still possible.
 
@@ -17,7 +17,7 @@ A lightweight command-line tool that narrows down your Wordle candidates in real
 git clone ttps://github.com/TheRealOctopus/WordleHelper.git
 cd WordleHelper
 # You can change the words.txt file, then:
-python wordlehelper.py
+python wordle.py
 ```
 
 ---
