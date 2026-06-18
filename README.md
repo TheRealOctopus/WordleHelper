@@ -1,2 +1,85 @@
-# WordleHelper
-A python script that "help" you play wordle, the project only has a list of 5 letters long English words
+# WordleHelper 🟩
+
+A lightweight command-line tool that narrows down your Wordle candidates in real time. Feed it the clues from each guess — green, yellow, and grey tiles — and it filters a word list down to only the words still possible.
+
+---
+
+## Requirements
+
+- Python 3.x
+- A `words.txt` file in the same directory — one word per line (5-letter words recommended)
+
+---
+
+## Setup
+
+```bash
+git clone ttps://github.com/TheRealOctopus/WordleHelper.git
+cd WordleHelper
+# You can change the words.txt file, then:
+python wordlehelper.py
+```
+
+---
+
+## Commands
+
+Commands are entered one at a time. The word list is filtered immediately after each command.
+
+| Command | Meaning | Example |
+|--------|---------|---------|
+| `i<char>` | **Include** — keep only words containing this letter (yellow or green tile) | `ia` → keep words with `a` |
+| `n<char>` | **Not include** — remove words containing this letter (grey tile) | `nz` → remove words with `z` |
+| `e<char><pos>` | **Exact** — keep only words with this letter at this position (green tile) | `ea2` → `a` must be at position 2 |
+| `r<char><pos>` | **Remove position** — remove words with this letter at this position (yellow tile — letter exists but not here) | `ra2` → remove words where `a` is at position 2 |
+| `show` | Print the current list of remaining candidates | `show` |
+| `clear` | Reset the word list back to the full original list | `clear` |
+
+> Positions are **1-indexed** (position 1 is the first letter).
+
+---
+
+## Example Workaround
+
+Say your target word is **CRANE** and your first guess is **AUDIO**:
+
+```
+Guess: AUDIO
+Result: A=grey, U=grey, D=grey, I=grey, O=grey
+```
+
+```
+na
+nu
+nd
+ni
+no
+show
+```
+
+Next guess: **STERN**
+
+```
+Guess: STERN
+Result: S=grey, T=grey, E=yellow, R=yellow, N=green
+```
+
+```
+ns
+nt
+ie
+ir
+en5
+re2
+show
+```
+
+The list now contains only words where `e` and `r` are present, `n` is the last letter, `e` is not at position 2, and `r` is not at position 3.
+
+---
+
+## Notes
+
+- The `i` (include) command keeps words that contain the letter **anywhere** — pair it with `r` to express "letter is in the word but not at this spot" (yellow tile).
+- `clear` reloads the word list from `words.txt` so you can start a fresh puzzle without restarting the script.
+- Each command resets internal state after filtering, so commands don't stack — enter one clue at a time.
