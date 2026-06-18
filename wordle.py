@@ -47,19 +47,11 @@ def cleanup():
                     continue
             continue
 
-        if includes != []: # clean up for include command
-            if in_includes(words[i]):
-                continue
-            else:
-                words[i] = ""
-                continue
+        if not in_includes(words[i]):
+            words[i] = ""
         
-        if nincludes != []: # clean up for not include command
-            if in_mincludes(words[i]):
-                words[i] = ""
-                continue
-            else:
-                continue
+        if in_mincludes(words[i]):# clean up for not include command
+            words[i] = ""
 
     words = [w for w in words if w != ""]
 
