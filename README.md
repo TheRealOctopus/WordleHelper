@@ -32,7 +32,7 @@ Commands are entered one at a time. The word list is filtered immediately after 
 | `n<char>` | **Not include** — remove words containing this letter (grey tile) | `nz` → remove words with `z` |
 | `e<char><pos>` | **Exact** — keep only words with this letter at this position (green tile) | `ea2` → `a` must be at position 2 |
 | `r<char><pos>` | **Remove position** — remove words with this letter at this position (yellow tile — letter exists but not here) | `ra2` → remove words where `a` is at position 2 |
-| `show` | Print the current list of remaining candidates | `show` |
+| `show` or `show1` | Print the current list of remaining candidates, with or without duplicates. | `show` |
 | `clear` | Reset the word list back to the full original list | `clear` |
 
 > Positions are **1-indexed** (position 1 is the first letter).
@@ -50,7 +50,7 @@ Result: A=grey, U=grey, D=grey, I=grey, O=grey
 
 ```
 naudio
-show
+show1
 ```
 
 Next guess: **STERN**
