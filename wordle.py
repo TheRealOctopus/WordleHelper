@@ -2,7 +2,7 @@ words = []
 includes = []
 nincludes = []
 temp = []
-debuging = False
+debuging = True
 
 def startup():
     global words
@@ -87,8 +87,13 @@ while True:
         temp.append(int(a[1]) - 1)
         temp.append("")
         changed = True
+    
+    elif (a.startswith("clear")):
+        includes = []
+        nincludes = []
+        startup()
 
-    if (a.startswith("show")):
+    elif (a.startswith("show")):
         if(a.endswith("1")):
             words_nd = []
             for word in words:
@@ -99,10 +104,7 @@ while True:
             continue
         print(words, len(words))
     
-    if (a.startswith("clear")):
-        includes = []
-        nincludes = []
-        startup()
+    
 
     if changed:
         includes = list(set(includes))
