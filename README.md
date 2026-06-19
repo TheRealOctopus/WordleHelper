@@ -14,7 +14,7 @@ A lightweight command-line tool that narrows down your Wordle candidates in real
 ## Setup
 
 ```bash
-git clone ttps://github.com/TheRealOctopus/WordleHelper.git
+git clone https://github.com/TheRealOctopus/WordleHelper.git
 cd WordleHelper
 # You can change the words.txt file, then:
 python wordle.py
