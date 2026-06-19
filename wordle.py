@@ -89,7 +89,15 @@ while True:
         changed = True
 
     if (a.startswith("show")):
-         print(words)
+        if(a.endswith("1")):
+            words_nd = []
+            for word in words:
+                if(word == "".join(dict.fromkeys(word))):
+                    words_nd.append(word)
+                    continue
+            print(words_nd, len(words_nd))
+            continue
+        print(words, len(words))
     
     if (a.startswith("clear")):
         includes = []
